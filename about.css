@@ -1,0 +1,1297 @@
+/* ============================================================
+   About — 1568 design frame
+   All inner coordinates are expressed in 1568-width design px
+   and scaled through --u, so 1568 renders 1:1.
+   ============================================================ */
+
+.about {
+  --u: calc(min(100vw, 1568px) / 1568);
+  --ab-safe: calc(72 * var(--u));
+  --ab-ink: #ffffff;
+  --ab-dim: #9b9b9b;
+  --ab-line: #ffffff;
+  --ab-logo: calc(125 * var(--u));
+  position: relative;
+  padding-top: var(--ab-safe);
+  overflow-x: clip;
+  overflow-y: visible;
+  background: #000;
+  color: var(--ab-ink);
+  font-family: "Segoe UI", "Helvetica Neue", Arial, "Microsoft YaHei", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.ab-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.ab-inner {
+  position: relative;
+  width: min(100%, 1568px);
+  margin: 0 auto;
+}
+
+/* ---------- grid: card / gutter / info / right margin ---------- */
+.ab-grid {
+  display: grid;
+  overflow: visible;
+  grid-template-columns: 41.7092% 6.3137% 49.4260% 2.5510%;
+  align-items: start;
+  padding-top: calc(3 * var(--u));
+}
+
+.ab-left {
+  grid-column: 1;
+  min-width: 0;
+  overflow: visible;
+}
+
+/* ---------- ticket card ---------- */
+.ab-card-wrap {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  overflow: visible;
+}
+
+/* The page-wide reveal mask is a rectangle around the untransformed
+   wrapper. The ticket is rotated, so its bbox reaches past that box
+   (bottom / left). Never clip the card: the section handles overflow. */
+.about .ab-card-wrap {
+  clip-path: none !important;
+}
+
+.ab-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 654 / 580;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transform-origin: 0 0;
+  transform: translate3d(calc(-6 * var(--u)), calc(1.3 * var(--u)), 0) rotate(7.6deg);
+  transition: transform 0.72s cubic-bezier(0.16, 0.84, 0.24, 1);
+  will-change: transform;
+}
+
+.ab-card.is-live {
+  transform: translate3d(calc(-2 * var(--u)), 0, 0) rotate(0deg);
+}
+
+.ab-card:focus-visible {
+  outline: none;
+}
+
+.ab-card:focus-visible .ab-frame {
+  filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0)) drop-shadow(0 0 calc(10 * var(--u)) rgba(132, 226, 255, 0.55));
+}
+
+.ab-shot {
+  position: absolute;
+  left: 30.275%;
+  top: 3.966%;
+  width: 64.373%;
+  height: 93.276%;
+  overflow: hidden;
+  perspective: calc(700 * var(--u));
+  z-index: 0;
+  background: #c9ccce;
+}
+
+.ab-photo {
+  position: absolute;
+  left: -6%;
+  top: -6%;
+  width: 112%;
+  height: 112%;
+  display: block;
+  object-fit: cover;
+  object-position: 50% 42%;
+  transform-origin: 50% 45%;
+  transform: rotateX(var(--ab-rx, 0deg)) rotateY(var(--ab-ry, 0deg)) scale(1.06);
+  transition: opacity 0.52s ease, transform 0.09s linear;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+.ab-photo--future {
+  opacity: 1;
+  transition-delay: 0.08s, 0s;
+}
+
+.ab-photo--life {
+  opacity: 0;
+  object-position: 50% 34%;
+  transition-delay: 0s, 0s;
+}
+
+.ab-card.is-live .ab-photo--future {
+  opacity: 0;
+  transition-delay: 0s, 0s;
+}
+
+.ab-card.is-live .ab-photo--life {
+  opacity: 1;
+  transition-delay: 0.12s, 0s;
+}
+
+.ab-shot__sheen {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: calc(var(--ab-sheen, 0) * 0.16);
+  background: radial-gradient(
+    42% 38% at var(--ab-mx, 50%) var(--ab-my, 40%),
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.22) 45%,
+    rgba(255, 255, 255, 0) 72%
+  );
+  mix-blend-mode: soft-light;
+  transition: opacity 0.35s ease;
+}
+
+.ab-frame {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* ---------- stat pills ----------
+   The pill row sits 40px lower than before: the tilted ticket reaches
+   well below its layout box, so the row gets its own breathing room
+   and stays clear of the card / life-photo frame instead of relying
+   on a raised z-index. The row is in normal flow, so the parent
+   column grows with this gap and the internship section follows. */
+.ab-stats {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(26.5 * var(--u)) calc(35.5 * var(--u));
+  width: calc(552 * var(--u));
+  margin: calc(106 * var(--u)) 0 0 calc(116 * var(--u));
+  padding: 0;
+  list-style: none;
+}
+
+.ab-stat {
+  position: relative;
+  display: flex;
+  animation: abFloat 6.4s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  animation-delay: calc(var(--i, 0) * -2.05s);
+  will-change: transform;
+}
+
+/* Pausing on hover / focus / open keeps the pill still while the
+   pointer travels to the panel, and stops the float from dragging
+   the panel anchor around after a tap. */
+.ab-stat:hover,
+.ab-stat:focus-within,
+.ab-stat.is-pill-open {
+  animation-play-state: paused;
+}
+
+@keyframes abFloat {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, calc(-2.5 * var(--u)), 0); }
+}
+
+.ab-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: calc(54 * var(--u));
+  padding: 0 calc(27 * var(--u));
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  border-radius: calc(27 * var(--u));
+  background: rgba(255, 255, 255, 0.008);
+  color: #f2f4f4;
+  font: inherit;
+  font-size: calc(26 * var(--u));
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.005em;
+  white-space: nowrap;
+  cursor: pointer;
+  opacity: 1;
+  translate: 0 0;
+  transition: border-color 0.28s ease, background-color 0.28s ease,
+    box-shadow 0.32s ease, scale 0.34s cubic-bezier(0.2, 0.7, 0.2, 1),
+    translate 0.34s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* soft top-edge highlight, no looping glow */
+.ab-pill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 58%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease;
+}
+
+.ab-left:hover .ab-pill,
+.ab-left:focus-within .ab-pill {
+  opacity: 1;
+  translate: 0 0;
+}
+
+.ab-pill:focus-visible,
+.ab-pill.is-active {
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.62), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  scale: 1.014;
+  opacity: 1;
+  translate: 0 calc(-2 * var(--u));
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .ab-stat:hover .ab-pill {
+    border-color: #ffffff;
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.62), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+    scale: 1.014;
+    opacity: 1;
+    translate: 0 calc(-2 * var(--u));
+  }
+
+  .ab-stat:hover .ab-pill::before,
+  .ab-pill:focus-visible::before,
+  .ab-pill.is-active::before {
+    opacity: 0.85;
+  }
+
+  .ab-stat:hover .ab-pill__label,
+  .ab-pill:focus-visible .ab-pill__label,
+  .ab-pill.is-active .ab-pill__label {
+    color: rgba(240, 244, 246, 0.72);
+  }
+
+  .ab-stat:hover .ab-pill__num,
+  .ab-pill:focus-visible .ab-pill__num,
+  .ab-pill.is-active .ab-pill__num {
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.24);
+  }
+}
+
+.ab-pill:focus-visible {
+  outline: 2px solid #86e5ff;
+  outline-offset: calc(4 * var(--u));
+}
+
+.ab-pill__label {
+  color: inherit;
+  transition: color 0.28s ease;
+}
+
+.ab-pill__num {
+  margin-left: 0.26em;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: color 0.28s ease, text-shadow 0.28s ease;
+}
+
+.ab-pill__plus {
+  margin-left: 0.04em;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.86em;
+  font-weight: 500;
+}
+
+/* Legacy inline tips are replaced by the shared portal below; keep
+   them out of flow so nothing can flash before the script runs. */
+.ab-tip {
+  display: none;
+}
+
+/* ---------- shared portal tooltip ----------
+   Lives on <body> in the top layer (non-modal popover) so no card,
+   reveal mask, overflow or stacking context can cover or clip it.
+   Deliberately plain: one sentence, no counters, no scroll area. */
+.ab-tip-portal {
+  position: fixed;
+  inset: auto;
+  left: 0;
+  top: 0;
+  z-index: 9990;
+  width: max-content;
+  max-width: min(276px, calc(100vw - 24px));
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #e8edef;
+  font-family: "Segoe UI", "Helvetica Neue", Arial, "Microsoft YaHei", sans-serif;
+  font-size: 13.5px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  text-align: left;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate3d(-9999px, 0, 0);
+  transition: opacity 0.16s ease, visibility 0s linear 0.16s;
+}
+
+.ab-tip-portal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 0.16s ease, visibility 0s;
+}
+
+/* invisible hover bridge across the 10px gap to the trigger */
+.ab-tip-portal::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -10px;
+  height: 11px;
+}
+
+.ab-tip-portal.is-below::after {
+  bottom: auto;
+  top: -10px;
+}
+
+.ab-tip-portal__inner {
+  position: relative;
+  box-sizing: border-box;
+  width: max-content;
+  max-width: 100%;
+  padding: 13px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 10px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0) 46%),
+    linear-gradient(158deg, #171a1d 0%, #0b0d0f 62%, #101316 100%);
+  box-shadow: 0 16px 36px -14px rgba(0, 0, 0, 0.74), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transform: translate3d(0, 4px, 0);
+  transform-origin: 50% 100%;
+  transition: transform 0.16s ease;
+}
+
+.ab-tip-portal.is-open .ab-tip-portal__inner {
+  transform: translate3d(0, 0, 0);
+}
+
+.ab-tip-portal.is-below .ab-tip-portal__inner {
+  transform-origin: 50% 0;
+}
+
+.ab-tip-portal.is-below:not(.is-open) .ab-tip-portal__inner {
+  transform: translate3d(0, -4px, 0);
+}
+
+/* hairline top sheen + arrow */
+.ab-tip-portal__inner::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.ab-tip-portal__inner::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: var(--ab-arrow-x, 50%);
+  width: 7px;
+  height: 7px;
+  background: #0d1012;
+  transform: translate(-50%, -50%) rotate(45deg);
+  pointer-events: none;
+}
+
+.ab-tip-portal.is-below .ab-tip-portal__inner::after {
+  top: auto;
+  bottom: 100%;
+  transform: translate(-50%, 50%) rotate(45deg);
+}
+
+.ab-tip-portal__desc {
+  margin: 0;
+  color: rgba(233, 238, 240, 0.82);
+  font-size: inherit;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 900px) {
+  .ab-tip-portal {
+    max-width: min(264px, calc(100vw - 24px));
+    font-size: 13px;
+  }
+
+  .ab-tip-portal__inner {
+    padding: 12px 13px;
+  }
+}
+
+/* ---------- profile info ---------- */
+.ab-info {
+  grid-column: 3;
+  min-width: 0;
+  padding: 0;
+}
+
+.ab-namegrid {
+  display: grid;
+  grid-template-columns: 260fr 210fr 306fr;
+  height: calc(117 * var(--u));
+  border-top: 1px solid var(--ab-line);
+  border-bottom: 1px solid var(--ab-line);
+}
+
+.ab-cell {
+  min-width: 0;
+  padding-top: calc(26 * var(--u));
+  padding-left: calc(45 * var(--u));
+}
+
+.ab-cell + .ab-cell {
+  padding-left: calc(68 * var(--u));
+  border-left: 1px solid var(--ab-line);
+}
+
+.ab-cell:last-child {
+  padding-left: calc(60 * var(--u));
+}
+
+.ab-label {
+  display: block;
+  font-size: calc(28 * var(--u));
+  font-weight: 400;
+  line-height: calc(38 * var(--u));
+  letter-spacing: 0.055em;
+  color: var(--ab-dim);
+}
+
+.ab-cell strong {
+  display: block;
+  font-size: calc(34 * var(--u));
+  font-weight: 700;
+  line-height: calc(40 * var(--u));
+  letter-spacing: 0.005em;
+  color: #ffffff;
+}
+
+.ab-edu {
+  display: grid;
+  grid-template-columns: 469.5fr 305.5fr;
+  padding: calc(14 * var(--u)) 0 calc(6 * var(--u));
+  border-bottom: 1px solid var(--ab-line);
+}
+
+.ab-edu__left {
+  min-width: 0;
+  padding-left: calc(45 * var(--u));
+}
+
+.ab-edu__left p {
+  margin: 0;
+  font-size: calc(24 * var(--u));
+  line-height: calc(42 * var(--u));
+  color: #f0f2f2;
+  white-space: nowrap;
+}
+
+.ab-edu__right {
+  min-width: 0;
+  padding-left: calc(60 * var(--u));
+  border-left: 1px solid var(--ab-line);
+}
+
+.ab-edu__right p {
+  margin: 0;
+  font-size: calc(24 * var(--u));
+  line-height: calc(42 * var(--u));
+  color: #f0f2f2;
+}
+
+.ab-edu .ab-label {
+  display: inline;
+  font-size: calc(24 * var(--u));
+  line-height: inherit;
+  color: var(--ab-dim);
+}
+
+.ab-profile {
+  padding: calc(16 * var(--u)) calc(12 * var(--u)) 0 calc(45 * var(--u));
+}
+
+.ab-profile > .ab-label {
+  font-size: calc(24 * var(--u));
+  line-height: calc(30 * var(--u));
+}
+
+.ab-profile ol {
+  list-style: none;
+  margin: calc(14 * var(--u)) 0 0;
+  padding: 0;
+}
+
+.ab-profile li + li {
+  margin-top: calc(20 * var(--u));
+}
+
+.ab-profile h3 {
+  margin: 0;
+  font-size: calc(26 * var(--u));
+  line-height: calc(34 * var(--u));
+  font-weight: 600;
+  letter-spacing: 0.005em;
+  color: #ffffff;
+}
+
+.ab-profile h3 i {
+  font-style: normal;
+  font-weight: 400;
+  color: #cfd3d3;
+  margin-right: 0.04em;
+}
+
+.ab-profile p {
+  margin: 0;
+  font-size: calc(22 * var(--u));
+  line-height: calc(30 * var(--u));
+  color: var(--ab-dim);
+}
+
+/* ---------- internship ---------- */
+.ab-jobs {
+  --ab-panel-gap: calc(20 * var(--u));
+  --ab-pin-top: calc(96 * var(--u));
+  position: relative;
+  margin-top: calc(53 * var(--u));
+  padding-bottom: calc(32 * var(--u));
+  overflow: visible;
+}
+
+/* ---------- pinned internship scene ----------
+   The scene is a normal flow block with one sticky stage plus a scroll
+   room block. The stage docks to the bottom of the viewport; the extra
+   flow height is the scrub distance. No scroll listeners are cancelled,
+   no wheel / touch events are intercepted: the page keeps its native
+   scroll, the stage simply stays put while the room passes it. */
+.ab-jobs__pin {
+  position: relative;
+  z-index: 4;
+  display: flow-root;
+}
+
+.ab-jobs.is-scene .ab-jobs__pin {
+  position: sticky;
+  top: var(--ab-pin-top);
+  z-index: 6;
+  will-change: transform;
+}
+
+.ab-jobs__room {
+  display: none;
+}
+
+.ab-jobs.is-scene .ab-jobs__room {
+  display: block;
+  height: var(--ab-room-h, 0px);
+}
+
+.ab-jobs.is-static .ab-jobsrow {
+  transform: none !important;
+}
+
+/* While the stage is docked, a plain black curtain covers the content
+   that has already scrolled above it. The stage is bottom-aligned, so
+   this keeps the frame composed of the internship block only instead
+   of a half-scrolled stat pill peeking over the title. */
+.ab-jobs.is-scene .ab-jobs__pin::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  width: 100vw;
+  height: 100vh;
+  margin-left: -50vw;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+  transition: opacity 0.18s ease;
+}
+
+.ab-jobs.is-holding .ab-jobs__pin::before {
+  opacity: 1;
+}
+
+.ab-jobsrow {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+.ab-jobs__title {
+  position: relative;
+  top: calc(-3 * var(--u));
+  margin: 0 0 0 calc(90 * var(--u));
+  font-family: Arial, "Helvetica Neue", "Segoe UI", sans-serif;
+  font-size: calc(55 * var(--u));
+  line-height: calc(55 * var(--u));
+  font-weight: 700;
+  letter-spacing: 0.004em;
+  color: #ffffff;
+}
+
+/* the page-wide centre-out reveal must never clip the logo that
+   scales up (125 -> 144) or the panel that rises behind the row */
+.about .ab-track,
+.about .ab-jobsrow,
+.about .ab-job,
+.about .ab-job__node {
+  clip-path: none !important;
+}
+
+.ab-track {
+  position: relative;
+  margin-top: calc(59 * var(--u));
+  overflow: visible;
+}
+
+.ab-track__line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(62.5 * var(--u));
+  height: 1px;
+  background: #34383a;
+  z-index: 0;
+}
+
+.ab-jobsrow {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding-left: 0.383%;
+  z-index: 1;
+  overflow: visible;
+}
+
+.ab-job {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  overflow: visible;
+}
+
+.ab-job__node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: center;
+  cursor: pointer;
+  overflow: visible;
+}
+
+.ab-job__logo {
+  position: relative;
+  display: block;
+  width: var(--ab-logo);
+  height: var(--ab-logo);
+  border-radius: 50%;
+  overflow: hidden;
+  background: #fff;
+  transform: scale(1);
+  transform-origin: 50% 50%;
+  transition: transform 0.46s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.4s ease;
+}
+
+.ab-job__logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.ab-job.is-on .ab-job__logo {
+  transform: scale(1.152);
+}
+
+.ab-job__node:hover .ab-job__logo {
+  box-shadow: 0 calc(10 * var(--u)) calc(34 * var(--u)) rgba(255, 255, 255, 0.14);
+}
+
+.ab-job__node:focus-visible {
+  outline: none;
+}
+
+.ab-job__node:focus-visible .ab-job__logo {
+  outline: 2px solid #86e5ff;
+  outline-offset: calc(5 * var(--u));
+}
+
+.ab-job__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: opacity 0.24s ease, visibility 0.24s;
+}
+
+/* while a company is selected its own caption is hidden so nothing
+   stacks under the expanded logo / open panel; it comes back on close */
+.ab-job.is-on .ab-job__text {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.ab-job__name {
+  margin-top: calc(26 * var(--u));
+  font-size: calc(30 * var(--u));
+  line-height: calc(36 * var(--u));
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.ab-job__dept {
+  margin-top: calc(9 * var(--u));
+  font-size: calc(22 * var(--u));
+  line-height: calc(28 * var(--u));
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: #9aa1a4;
+  white-space: nowrap;
+}
+
+.ab-job__date {
+  margin-top: calc(8 * var(--u));
+  font-size: calc(20 * var(--u));
+  line-height: calc(24 * var(--u));
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  color: #e9ebeb;
+  white-space: nowrap;
+}
+
+/* ---------- shared detail panel ----------
+   It lives in normal flow, then rises by the caption-block height so
+   its top edge sits 20px under the logos (the captions behind it are
+   covered / the selected one is hidden). */
+.ab-pop {
+  --ab-rise: 0px;
+  position: relative;
+  z-index: 6;
+  isolation: isolate;
+  margin: var(--ab-panel-gap) 0 calc(-1 * var(--ab-rise));
+  min-height: var(--ab-panel-h, 0px);
+  background: linear-gradient(180deg, #14171b 0%, #252a2f 52%, #34383d 100%);
+  color: #d4d8db;
+  border: 0;
+  border-radius: calc(8 * var(--u));
+  padding: calc(28 * var(--u)) calc(90 * var(--u)) calc(30 * var(--u));
+  box-shadow: 0 calc(30 * var(--u)) calc(70 * var(--u)) rgba(0, 0, 0, 0.48);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate3d(0, calc(-1 * var(--ab-rise) - 6 * var(--u)), 0);
+  transition: opacity 0.26s ease, transform 0.34s cubic-bezier(0.22, 0.61, 0.36, 1), visibility 0.26s;
+}
+
+.ab-pop::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(-22 * var(--u));
+  height: calc(22 * var(--u));
+}
+
+.ab-pop.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate3d(0, calc(-1 * var(--ab-rise)), 0);
+}
+
+/* ---------- panel pointer triangle ---------- */
+.ab-pop__tri {
+  position: absolute;
+  top: calc(-20 * var(--u));
+  left: var(--ab-tri, 128px);
+  width: 0;
+  height: 0;
+  transform: translateX(-50%);
+  border-left: calc(16 * var(--u)) solid transparent;
+  border-right: calc(16 * var(--u)) solid transparent;
+  border-bottom: calc(20 * var(--u)) solid #14171b;
+  filter: drop-shadow(0 calc(-2 * var(--u)) calc(4 * var(--u)) rgba(0, 0, 0, 0.18));
+}
+
+.ab-pop__close {
+  display: none;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  color: #eef2f3;
+  font: inherit;
+  font-size: 19px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.ab-pop__body[hidden] {
+  display: none;
+}
+
+.ab-pop__title {
+  display: none;
+}
+
+.ab-pop__head {
+  display: flex;
+  align-items: baseline;
+  gap: calc(14 * var(--u));
+  margin: 0 0 calc(16 * var(--u));
+  padding-bottom: calc(14 * var(--u));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.ab-pop__idx {
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-size: calc(13 * var(--u));
+  letter-spacing: 0.14em;
+  font-weight: 400;
+  color: #7f8689;
+}
+
+.ab-pop__co {
+  font-size: calc(20 * var(--u));
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #f2f4f5;
+}
+
+.ab-pop__dept {
+  margin-left: auto;
+  font-size: calc(13 * var(--u));
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: #8a9094;
+  white-space: nowrap;
+}
+
+.ab-pop__row {
+  display: grid;
+  grid-template-columns: calc(136 * var(--u)) minmax(0, 1fr);
+  padding: calc(15 * var(--u)) 0;
+}
+
+.ab-pop__row + .ab-pop__row {
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.ab-pop__label {
+  font-size: calc(13 * var(--u));
+  line-height: 1.6;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: #8d9497;
+  padding-top: calc(3 * var(--u));
+}
+
+.ab-pop__text {
+  margin: 0;
+  font-size: calc(22 * var(--u));
+  line-height: calc(30 * var(--u));
+  color: #d2d7da;
+  letter-spacing: 0.005em;
+}
+
+.ab-pop__text b {
+  font-weight: 500;
+  color: #ffffff;
+  padding: 0 0.14em;
+  border-radius: 2px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.05));
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .ab-card,
+  .ab-photo,
+  .ab-jobsrow {
+    transition: none !important;
+    transform: none !important;
+  }
+
+  .ab-card {
+    transform: none !important;
+  }
+
+  .ab-photo--future {
+    opacity: 0 !important;
+    display: none;
+  }
+
+  .ab-photo--life {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .ab-stat {
+    animation: none !important;
+  }
+
+  .ab-pill {
+    opacity: 1 !important;
+    translate: 0 0 !important;
+    transition: none !important;
+  }
+
+  .ab-pill::before {
+    transition: none !important;
+  }
+
+  .ab-tip-portal,
+  .ab-tip-portal__inner {
+    transition: none !important;
+  }
+
+  .ab-tip-portal__inner,
+  .ab-tip-portal.is-below .ab-tip-portal__inner {
+    transform: none !important;
+  }
+
+  .ab-pop {
+    transition: none;
+  }
+
+  .ab-shot__sheen {
+    opacity: 0 !important;
+  }
+}
+
+/* ---------- stacked layout ---------- */
+@media (max-width: 900px) {
+  .about {
+    --u: 1px;
+    --ab-safe: 84px;
+    padding-top: var(--ab-safe);
+  }
+
+  .ab-grid {
+    display: block;
+    padding: 0 20px;
+  }
+
+  .ab-card-wrap {
+    width: calc(100% + 20px);
+    max-width: 470px;
+    margin: 0 0 0 -20px;
+  }
+
+  .ab-card {
+    transform-origin: 0 0;
+    transform: translate3d(0, 0, 0) rotate(4deg);
+  }
+
+  .ab-card.is-live {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  .ab-stats {
+    width: auto;
+    margin: 64px 0 0;
+    gap: 12px;
+  }
+
+  .ab-pill {
+    height: 42px;
+    padding: 0 18px;
+    border-radius: 21px;
+    font-size: 15px;
+    opacity: 1;
+    translate: 0 0;
+  }
+
+  .ab-info {
+    margin-top: 34px;
+    padding: 0;
+  }
+
+  .ab-namegrid {
+    grid-template-columns: 33.5% 27.1% 39.4%;
+    height: 92px;
+  }
+
+  .ab-cell {
+    padding-top: 18px;
+    padding-left: 0;
+  }
+
+  .ab-cell + .ab-cell,
+  .ab-cell:last-child {
+    padding-left: 14px;
+  }
+
+  .ab-label {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .ab-cell strong {
+    font-size: 22px;
+    line-height: 28px;
+  }
+
+  .ab-edu {
+    display: block;
+    padding: 12px 0 8px;
+  }
+
+  .ab-edu__left p,
+  .ab-edu__right p,
+  .ab-edu .ab-label {
+    font-size: 14px;
+    line-height: 26px;
+  }
+
+  .ab-edu__left {
+    padding-left: 0;
+  }
+
+  .ab-edu__left p {
+    white-space: normal;
+  }
+
+  .ab-edu__right {
+    margin-top: 6px;
+    padding: 12px 0 0;
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.55);
+  }
+
+  .ab-profile {
+    padding: 14px 0 0;
+  }
+
+  .ab-profile > .ab-label {
+    font-size: 15px;
+    line-height: 24px;
+  }
+
+  .ab-profile h3 {
+    font-size: 17px;
+    line-height: 26px;
+  }
+
+  .ab-profile p {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .ab-profile li + li {
+    margin-top: 14px;
+  }
+
+  .ab-jobs {
+    margin-top: 40px;
+    padding-bottom: 32px;
+  }
+
+  .ab-jobs__title {
+    margin-left: 20px;
+    font-size: 32px;
+    line-height: 38px;
+  }
+
+  .ab-track {
+    margin-top: 34px;
+  }
+
+  .ab-track__line {
+    top: 33px;
+  }
+
+  .ab-jobsrow {
+    padding-left: 0;
+  }
+
+  .ab-job__logo {
+    width: 66px;
+    height: 66px;
+  }
+
+  .ab-job.is-on .ab-job__logo {
+    transform: scale(1.11);
+  }
+
+  .ab-job__name {
+    margin-top: 16px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .ab-job__dept {
+    margin-top: 5px;
+    font-size: 10.5px;
+    line-height: 16px;
+    letter-spacing: 0.01em;
+    color: #8f979a;
+  }
+
+  .ab-job__date {
+    margin-top: 4px;
+    font-size: 10.5px;
+    line-height: 16px;
+  }
+
+  .ab-pop {
+    position: fixed;
+    top: auto;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    min-height: 0;
+    margin: 0;
+    max-height: 76svh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border: 0;
+    border-radius: 12px;
+    background: linear-gradient(180deg, #14171b 0%, #252a2f 52%, #34383d 100%);
+    padding: 18px 16px 18px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.56);
+    transform: translate3d(0, 12px, 0);
+  }
+
+  .ab-pop.is-open {
+    transform: translate3d(0, 0, 0);
+  }
+
+  .ab-pop__close {
+    display: grid;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+  }
+
+  .ab-pop__head {
+    padding-right: 34px;
+  }
+
+  .ab-pop::before,
+  .ab-pop__tri {
+    display: none;
+  }
+
+  .ab-pop__head {
+    flex-wrap: wrap;
+    gap: 6px 10px;
+    margin-bottom: 4px;
+    padding-bottom: 10px;
+  }
+
+  .ab-pop__co {
+    font-size: 17px;
+  }
+
+  .ab-pop__dept {
+    margin-left: 0;
+    width: 100%;
+    font-size: 11.5px;
+    white-space: normal;
+  }
+
+  .ab-pop__row {
+    grid-template-columns: 1fr;
+    gap: 3px;
+    padding: 12px 0;
+  }
+
+  .ab-pop__row + .ab-pop__row {
+    margin-top: 0;
+  }
+
+  .ab-pop__label {
+    font-size: 11.5px;
+    line-height: 1.6;
+    letter-spacing: 0.1em;
+    padding-top: 0;
+  }
+
+  .ab-pop__text {
+    font-size: 14px;
+    line-height: 23px;
+  }
+}
+
+@media (max-width: 420px) {
+  .ab-job__date {
+    font-size: 10.5px;
+    letter-spacing: 0;
+  }
+
+  .ab-job__name {
+    font-size: 13px;
+  }
+
+  .ab-stats {
+    gap: 10px;
+  }
+
+  .ab-pill {
+    height: 38px;
+    padding: 0 15px;
+    font-size: 13.5px;
+  }
+}
+

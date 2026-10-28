@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%23000%27/%3E%3Ctext x=%2716%27 y=%2722%27 text-anchor=%27middle%27 font-family=%27Arial%27 font-size=%2718%27 font-weight=%27bold%27 fill=%27%23fff%27%3EJ%3C/text%3E%3C/svg%3E">
+<meta name="description" content="赵正杰 James 的个人作品集 · UI / GUI 设计、创意视觉与 AIGC"><title>赵正杰 James — UI / GUI 设计 · 创意视觉 / AIGC</title>
+<script>if(!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches))document.documentElement.classList.add('motion');</script>
+
+<style>
+:root{--bg:#090b0d;--surface:#111619;--line:#263033;--text:#f0f2f2;--muted:#929c9f;--accent:#69e2d0}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:88px}body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,"Helvetica Neue","Microsoft YaHei",sans-serif;letter-spacing:0}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit}a{color:inherit;text-decoration:none}button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:6px}button{cursor:pointer}header{height:84px;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10;background:#090b0ded;backdrop-filter:blur(20px)}.nav{max-width:1392px;margin:auto;padding:0 56px;height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}.logo{font-weight:800;font-size:25px}.logo span{color:var(--accent)}nav{display:flex;gap:34px}nav a{font-size:13px;color:var(--muted);position:relative;padding:12px 0}nav a.active,nav a:hover{color:var(--text)}nav a.active:after{content:"";position:absolute;bottom:0;left:0;width:16px;height:2px;background:var(--accent)}.available{font-size:11px;color:#bdc7c7;display:flex;align-items:center;gap:9px}.dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px #69e2d055}.wrap{max-width:1392px;padding:0 56px;margin:auto}.eyebrow{display:flex;align-items:center;gap:12px;font-size:11px;color:var(--muted);text-transform:uppercase;line-height:1.8}.eyebrow:before{content:"";width:25px;height:1px;background:var(--accent)}h1{font-size:clamp(64px,7.2rem,116px);line-height:.99;font-weight:600;margin:34px 0 26px}h1 span{display:block;color:var(--accent);font-size:.42em;line-height:1.15;letter-spacing:.14em;font-weight:500;margin-top:16px}.intro{font-size:17px;line-height:1.95;color:#a6afb1;max-width:430px}.intro strong{color:#e2e7e7;font-weight:400}.actions{display:flex;align-items:center;gap:28px;margin-top:34px}.primary{background:var(--accent);color:#092420;border:0;display:inline-flex;align-items:center;gap:28px;padding:16px 22px;font-size:13px;font-weight:600;border-radius:3px}.primary:hover{background:#99f3e5}.textlink{font-size:13px;border-bottom:1px solid #667271;padding-bottom:7px}.section{padding-top:84px;padding-bottom:84px;border-top:1px solid var(--line)}.section-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:36px}.section-head h2{font-size:38px;font-weight:500;margin:12px 0 0;line-height:1.3}.section-head h2 span{color:var(--muted);font-size:14px;margin-left:12px}.filters{display:flex;gap:8px;flex-wrap:wrap}.filters button{border:1px solid var(--line);color:var(--muted);background:none;border-radius:3px;padding:9px 14px;font-size:12px}.filters button[aria-pressed=true]{background:var(--accent);color:#102b25;border-color:var(--accent)}.projects{display:grid;grid-template-columns:1fr 1fr;gap:42px 28px}.project{min-width:0}.project[hidden]{display:none}.cover{width:100%;aspect-ratio:1.49;border:1px solid #24302f;display:block;position:relative;overflow:hidden;padding:0;background:#101819;color:var(--text);text-align:left;transition:border-color .4s}.cover:before{content:"";position:absolute;inset:0;background-image:linear-gradient(#ffffff0b 1px,transparent 1px),linear-gradient(90deg,#ffffff0b 1px,transparent 1px);background-size:44px 44px;opacity:.8;pointer-events:none}.cover:after{content:"";position:absolute;width:46%;aspect-ratio:1;border:1px solid #69e2d02e;border-radius:50%;right:-10%;top:-16%;pointer-events:none}.cover:hover{border-color:#41605a}.cover-body{position:absolute;inset:0;padding:58px 32px 64px;display:flex;flex-direction:column;justify-content:center;z-index:1;transition:transform .45s}.cover:hover .cover-body{transform:translateY(-5px)}.cover-body small{font-size:10px;letter-spacing:.16em;color:var(--accent);text-transform:uppercase;display:block}.cover-body strong{font-size:clamp(25px,2.45vw,38px);line-height:1.26;font-weight:600;margin:12px 0 10px;display:block}.cover-body em{font-style:normal;font-size:12px;color:#98a6a5;line-height:1.8;display:block;max-width:27em}.cover-num{position:absolute;right:18px;bottom:2px;font-size:clamp(84px,9vw,132px);line-height:.85;font-weight:800;color:#ffffff09;letter-spacing:-.06em;z-index:0;pointer-events:none}.cover .pending{position:absolute;left:32px;bottom:22px;z-index:2;font-size:10px;color:#a9b7b4;border:1px solid #3a4b47;border-radius:99px;padding:5px 10px;background:#0a1112cc}.cover .number{position:absolute;top:18px;left:20px;font-size:11px;background:#090b0d9c;padding:6px 9px;color:white}.cover .open{position:absolute;right:20px;bottom:20px;width:40px;height:40px;display:grid;place-items:center;background:#f0f2f2;color:#111;border-radius:50%;font-size:23px;transition:transform .3s}.cover:hover .open{transform:rotate(45deg)}.project-meta{display:flex;justify-content:space-between;gap:12px;padding-top:17px;align-items:start}.project-meta h3{font-size:20px;font-weight:500;margin:0 0 7px}.project-meta p{font-size:12px;margin:0;color:var(--muted);line-height:1.8}.tag{font-size:10px;color:#b7c3c2;border:1px solid var(--line);padding:6px 8px;white-space:nowrap}.about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:90px}.about-title{font-size:44px;line-height:1.45;margin:20px 0;font-weight:500}.about-title em{font-style:normal;color:var(--accent)}.body-copy{font-size:14px;line-height:2;color:var(--muted);margin:0 0 26px}.skills{display:flex;flex-wrap:wrap;gap:10px}.skills span{border-bottom:1px solid var(--line);padding:9px 12px;font-size:12px;color:#c5cecf}.timeline{margin-top:36px}.timeline-row{display:grid;grid-template-columns:95px 1fr;gap:20px;border-top:1px solid var(--line);padding:22px 0}.timeline-row time{color:var(--muted);font-size:11px;padding-top:4px}.timeline-row h3{font-size:15px;margin:0 0 9px;font-weight:500}.timeline-row p{font-size:12px;line-height:1.8;color:var(--muted);margin:0}.contact{display:flex;justify-content:space-between;align-items:center;gap:40px;padding-top:72px;padding-bottom:72px}.contact h2{font-size:48px;margin:15px 0;font-weight:500}.contact p{font-size:13px;color:var(--muted);line-height:1.8}.contact-button{border:1px solid #63706c;color:var(--text);padding:20px 28px;background:transparent;display:flex;align-items:center;gap:45px;border-radius:3px}.contact-button:hover{border-color:var(--accent);color:var(--accent)}footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-size:10px}.footer-inner{display:flex;justify-content:space-between;gap:20px;line-height:1.8}.footer-inner a{color:var(--text)}dialog{width:min(850px,calc(100% - 32px));border:1px solid #3d514b;border-radius:6px;background:var(--surface);color:var(--text);padding:0;max-height:88vh}dialog::backdrop{background:#000c;backdrop-filter:blur(7px)}.modal-top{display:flex;justify-content:space-between;align-items:center;padding:20px 28px;border-bottom:1px solid var(--line);font-size:11px;color:var(--muted)}.close{width:34px;height:34px;background:none;border:1px solid var(--line);color:white;font-size:22px;border-radius:50%}.modal-kicker{font-size:10px;color:var(--accent);letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px}.modal-meta{font-size:12px!important;color:var(--muted)!important;margin:0 0 18px!important;line-height:1.7!important}.contact-list{list-style:none;padding:0;margin:24px 0 0;display:flex;flex-direction:column;gap:16px}.contact-list li{border-top:1px solid var(--line);padding-top:16px}.contact-list .label{display:block;font-size:10px;color:var(--accent);letter-spacing:.12em;margin-bottom:9px}.contact-list a{font-size:17px;border-bottom:1px solid #3f4f4b;padding-bottom:3px}.contact-list a:hover{color:var(--accent);border-color:var(--accent)}.copy-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.copy-row input{background:#0b1112;border:1px solid var(--line);color:var(--text);padding:10px 12px;font:inherit;font-size:14px;border-radius:3px;width:190px;max-width:100%}.copy-row button{border:1px solid #48605a;background:none;color:var(--accent);padding:10px 16px;border-radius:3px;font-size:12px}.copy-row button:hover{background:#69e2d015}.copy-hint{display:block;font-size:11px;line-height:1.7;color:#84908f;margin-top:9px}.modal-content{padding:30px}.modal-content h2{font-size:30px;margin:0 0 16px}.modal-content p{font-size:14px;line-height:1.9;color:#b2bdbc}.modal-fields{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:28px 0}.modal-fields>div:last-child{grid-column:1/-1}.modal-fields dt{font-size:10px;color:var(--accent);margin-bottom:10px}.modal-fields dd{font-size:13px;margin:0;line-height:1.8}.notice{font-size:11px!important;color:#8b9693!important;border-top:1px solid var(--line);padding-top:18px}.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:#dbf7ef;color:#153f31;padding:14px 22px;font-size:13px;border-radius:4px;z-index:30;box-shadow:0 8px 40px #0005}.toast[hidden]{display:none}@media(min-width:1600px){h1{font-size:116px}}@media(max-width:1000px){.nav,.wrap{padding-left:30px;padding-right:30px}h1{font-size:80px}.about-grid{gap:40px}.available{display:none}.contact h2{font-size:38px}}@media(max-width:640px){header{height:68px}.nav,.wrap{padding-left:22px;padding-right:22px}.logo{font-size:21px}nav{gap:20px}nav a{font-size:12px}h1{font-size:76px;margin:24px 0}.intro{font-size:14px}.actions{gap:24px}.section{padding-top:48px;padding-bottom:48px}.section-head{align-items:start;flex-direction:column;gap:22px}.section-head h2{font-size:30px}.section-head h2 span{font-size:11px}.projects{grid-template-columns:1fr;gap:32px}.project-meta h3{font-size:18px}.cover-body{padding:40px 20px 54px}.cover-body strong{font-size:24px;line-height:1.3;margin:9px 0 8px}.cover-body em{font-size:10.5px;line-height:1.7}.cover .pending{left:20px;bottom:16px;font-size:9px;padding:4px 8px}.cover-num{font-size:86px;right:10px}.cover .open{right:14px;bottom:14px;width:34px;height:34px;font-size:20px}.about-grid{grid-template-columns:1fr;gap:24px}.about-title{font-size:35px}.contact{flex-direction:column;align-items:start;gap:24px}.contact h2{font-size:36px}.contact-button{width:100%;justify-content:space-between}.footer-inner{flex-direction:column;gap:8px}.modal-content{padding:22px}.modal-fields{grid-template-columns:1fr}.modal-content h2{font-size:25px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+</style>
+<link rel="stylesheet" href="hero.css">
+<link rel="stylesheet" href="about.css">
+<link rel="stylesheet" href="projects.css">
+<link rel="stylesheet" href="contact.css">
+<link rel="stylesheet" href="motion.css">
+<link rel="stylesheet" href="cursor.css">
+<link rel="stylesheet" href="play-ball.css">
+</head>
+<body id="top">
+<div class="hf-tab" role="navigation" aria-label="主导航">
+<span class="hf-tab__glow" aria-hidden="true"></span>
+<span class="hf-tab__pill" aria-hidden="true"></span>
+<a class="hf-tab__item is-active" href="#top" data-section="home" aria-label="首页"><span class="zh" aria-hidden="true">首页</span><span class="en" aria-hidden="true">HOME</span></a>
+<a class="hf-tab__item" href="#about" data-section="about" aria-label="关于"><span class="zh" aria-hidden="true">关于</span><span class="en" aria-hidden="true">ABOUT</span></a>
+<a class="hf-tab__item" href="#work" data-section="work" aria-label="作品"><span class="zh" aria-hidden="true">作品</span><span class="en" aria-hidden="true">PROJECT</span></a>
+<a class="hf-tab__item" href="#contact" data-section="contact" aria-label="联系"><span class="zh" aria-hidden="true">联系</span><span class="en" aria-hidden="true">CONTACT</span></a>
+</div>
+
+
+<main>
+<section class="hero" aria-labelledby="hero-title">
+<div class="hero-marque" aria-hidden="true"><video class="hero-video" autoplay muted loop playsinline preload="auto" poster="hero-background-poster.jpg" disablepictureinpicture><source src="hero-background.mp4" type="video/mp4"></video></div>
+<div class="hero-brand">JAMES’ PORTFOLIO</div>
+<div class="hero-tools" role="group" aria-label="软件工具">
+<button class="hero-tool" type="button" data-tool="figma" aria-label="Figma" aria-describedby="hero-tip"><img src="software-figma.png" alt="" draggable="false"></button>
+<button class="hero-tool" type="button" data-tool="photoshop" aria-label="Photoshop" aria-describedby="hero-tip"><img src="software-photoshop.png" alt="" draggable="false"></button>
+<button class="hero-tool" type="button" data-tool="illustrator" aria-label="Illustrator" aria-describedby="hero-tip"><img src="software-illustrator.png" alt="" draggable="false"></button>
+<button class="hero-tool" type="button" data-tool="c4d" aria-label="Cinema 4D" aria-describedby="hero-tip"><img src="software-c4d.png" alt="" draggable="false"></button>
+<button class="hero-tool" type="button" data-tool="chatgpt" aria-label="ChatGPT" aria-describedby="hero-tip"><img src="software-chatgpt.png" alt="" draggable="false"></button>
+<button class="hero-tool" type="button" data-tool="codex" aria-label="Codex" aria-describedby="hero-tip"><img src="software-codex.png" alt="" draggable="false"></button>
+</div>
+<div class="hero-tip" id="hero-tip" role="tooltip" aria-hidden="true"><strong class="hero-tip__name"></strong><span class="hero-tip__desc"></span></div>
+<div class="hero-figure" id="hero-stage" role="button" tabindex="0" aria-label="人物形象互动：移动鼠标或手指，在指针附近显露金发机械形象；按空格或回车切换。">
+<div class="hero-tilt" id="hero-tilt"><img class="hero-base" src="hero-classic.png" alt="赵正杰 James，黑色西装形象" draggable="false"><canvas class="hero-reveal" aria-hidden="true"></canvas></div>
+</div>
+<div class="hero-name"><h1 id="hero-title">James</h1><p>Portfolio 2026</p></div>
+<div class="hero-role">UI / Visual / AIGC</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="about" id="about" aria-label="关于我">
+<div class="ab-inner">
+<h2 class="ab-sr">关于我</h2>
+<div class="ab-grid">
+<div class="ab-left">
+<div class="ab-card-wrap"><button class="ab-card" type="button" data-ab-card aria-pressed="false" aria-label="我的照片：悬停、聚焦或点击可回正卡片并切换为生活照">
+<span class="ab-shot" aria-hidden="true">
+<img class="ab-photo ab-photo--future" src="about-assets/about-portrait-future.jpg" alt="" width="835" height="1074" draggable="false">
+<img class="ab-photo ab-photo--life" src="about-assets/about-portrait-life.jpg" alt="" width="864" height="1080" draggable="false">
+<span class="ab-shot__sheen"></span>
+</span>
+<img class="ab-frame" src="about-assets/about-card-frame.webp" alt="" width="1308" height="1160" draggable="false" aria-hidden="true">
+</button></div>
+<ul class="ab-stats">
+<li class="ab-stat" style="--i:0"><button class="ab-pill" type="button" aria-describedby="ab-tip-1">累计落地项目20+</button><span class="ab-tip" id="ab-tip-1" role="tooltip">累计落地项目包含游戏、电商与教育等设计项目。</span></li>
+<li class="ab-stat" style="--i:1"><button class="ab-pill" type="button" aria-describedby="ab-tip-2">优化 UI 组件30+</button><span class="ab-tip" id="ab-tip-2" role="tooltip">优化 UI 组件包含通用组件、交互状态与视觉规范优化。</span></li>
+<li class="ab-stat" style="--i:2"><button class="ab-pill" type="button" aria-describedby="ab-tip-3">输出标准化视觉物料180+</button><span class="ab-tip" id="ab-tip-3" role="tooltip">标准化视觉物料包含活动页面、场景图、图标与插画等标准化物料。</span></li>
+</ul>
+</div>
+<div class="ab-info">
+<div class="ab-namegrid">
+<div class="ab-cell"><span class="ab-label">NAME :</span><strong>赵正杰</strong></div>
+<div class="ab-cell"><span class="ab-label">AGE :</span><strong>21</strong></div>
+<div class="ab-cell"><span class="ab-label">MBTI:</span><strong>INTJ-A</strong></div>
+</div>
+<div class="ab-edu">
+<div class="ab-edu__left">
+<p><span class="ab-label">EDUCATION ：</span>湖北工业大学</p>
+<p><span class="ab-label">PROFESSIONAL ：</span>视觉传达</p>
+</div>
+<div class="ab-edu__right">
+<span class="ab-label">INTENTION ：</span>
+<p>UI设计 / 视觉设计</p>
+</div>
+</div>
+<div class="ab-profile">
+<span class="ab-label">PROFILE :</span>
+<ol>
+<li><h3><i>1.</i>视觉体系搭建：</h3><p>擅长搭建品牌、组件与 IP 视觉规范，沉淀标准化可复用视觉资产，保障多渠道视觉统一。</p></li>
+<li><h3><i>2.</i>多场景业务落地：</h3><p>拥有游戏、电商、产品多类型项目经验，设计兼顾落地适配，能够助力业务指标提升。</p></li>
+<li><h3><i>3.</i>AIGC 复合设计：</h3><p>熟练掌握 Figma、PS、C4D 等设计工具，可结合 AIGC 工具优化工作流，高效完成创意产出。</p></li>
+<li><h3><i>4.</i>项目协同适配：</h3><p>能够对接多方角色推进项目，熟悉海外本地化视觉适配，保障项目按时高质量交付。</p></li>
+</ol>
+</div>
+</div>
+</div>
+
+<div class="ab-jobs" data-ab-jobs>
+<div class="ab-jobs__pin" data-ab-pin>
+<h2 class="ab-jobs__title">Internship Experience</h2>
+<div class="ab-track" data-ab-track>
+<div class="ab-track__line" aria-hidden="true"></div>
+<div class="ab-jobsrow" data-ab-row>
+<article class="ab-job" data-ab-job>
+<button class="ab-job__node" type="button" aria-expanded="false" aria-controls="ab-pop" data-ab-job-btn>
+<span class="ab-job__logo"><img src="about-assets/logo-netease.png" alt="" width="306" height="306" draggable="false"></span>
+<span class="ab-job__text"><span class="ab-job__name">网易游戏</span><span class="ab-job__dept">发行中心 · 用增运营部</span><time class="ab-job__date" datetime="2026-07/2026-10">2026.07—2026.10</time></span>
+</button>
+</article>
+<article class="ab-job" data-ab-job>
+<button class="ab-job__node" type="button" aria-expanded="false" aria-controls="ab-pop" data-ab-job-btn>
+<span class="ab-job__logo"><img src="about-assets/logo-oppo.png" alt="" width="306" height="306" draggable="false"></span>
+<span class="ab-job__text"><span class="ab-job__name">OPPO</span><span class="ab-job__dept">产品线系统 · 配件产品线部</span><time class="ab-job__date" datetime="2026-04/2026-07">2026.04—2026.07</time></span>
+</button>
+</article>
+<article class="ab-job" data-ab-job>
+<button class="ab-job__node" type="button" aria-expanded="false" aria-controls="ab-pop" data-ab-job-btn>
+<span class="ab-job__logo"><img src="about-assets/logo-zhihuishu.png" alt="" width="306" height="306" draggable="false"></span>
+<span class="ab-job__text"><span class="ab-job__name">智慧树网</span><span class="ab-job__dept">产品开发部 · 视觉设计组</span><time class="ab-job__date" datetime="2025-12/2026-02">2025.12—2026.02</time></span>
+</button>
+</article>
+</div>
+</div>
+<div class="ab-pop" id="ab-pop" role="region" aria-label="实习经历详情" aria-hidden="true" data-ab-pop>
+<span class="ab-pop__tri" aria-hidden="true"></span>
+<button class="ab-pop__close" type="button" data-ab-pop-close aria-label="关闭实习详情">×</button>
+<div class="ab-pop__body" data-ab-body="0" hidden>
+<div class="ab-pop__head"><span class="ab-pop__idx">01</span><span class="ab-pop__co">网易游戏</span><span class="ab-pop__dept">发行中心 — 用增运营部 · 2026.07—2026.10</span></div>
+<div class="ab-pop__row"><span class="ab-pop__label">工作内容</span><p class="ab-pop__text">深度参与网易旗下多款热门游戏的视觉制作，涵盖《梦幻西游》《第五人格》《蛋仔派对》等产品，配合版本迭代与节日活动开发；负责活动界面、弹窗设计、素材输出与机型适配；对接运营与策划完成页面布局，统筹热点活动页面搭建并跟进修改调整。</p></div>
+<div class="ab-pop__row"><span class="ab-pop__label">取得成果</span><p class="ab-pop__text">累计参与 <b>10+</b> 款热门游戏视觉制作，产出 <b>120 余份</b>页面输出，优化 <b>30 余个</b> UI 组件，素材通过率 <b>98%</b>，配合团队保障版本按时上线，减少上线视觉问题。</p></div>
+</div>
+<div class="ab-pop__body" data-ab-body="1" hidden>
+<div class="ab-pop__head"><span class="ab-pop__idx">02</span><span class="ab-pop__co">OPPO</span><span class="ab-pop__dept">产品线系统 — 配件产品线部 · 2026.04—2026.07</span></div>
+<div class="ab-pop__row"><span class="ab-pop__label">工作内容</span><p class="ab-pop__text">依托 OPPO 品牌视觉体系，负责一加、OPPO 全品类配件视觉设计，落地产品场景图、电商页面与宣传物料；跟进哈苏影像套装项目视觉打造，完成高端视觉体系搭建；对接海外市场需求，推进多区域视觉本地化适配与落地。</p></div>
+<div class="ab-pop__row"><span class="ab-pop__label">取得成果</span><p class="ab-pop__text">累计协助输出 <b>60+ 套</b>全渠道视觉物料，标准化规范落地保障品牌视觉零偏差；完成 <b>10+</b> 海外区域本地化适配，助力海外电商转化率提升 <b>18%</b>；推动哈苏影像项目产品高端市场关注度提升 <b>42%</b>。</p></div>
+</div>
+<div class="ab-pop__body" data-ab-body="2" hidden>
+<div class="ab-pop__head"><span class="ab-pop__idx">03</span><span class="ab-pop__co">智慧树网</span><span class="ab-pop__dept">产品开发部 — 视觉设计组 · 2025.12—2026.02</span></div>
+<div class="ab-pop__row"><span class="ab-pop__label">工作内容</span><p class="ab-pop__text">参与智慧树实验中心平台设计，制定视觉规范、搭建通用组件库与界面系统，优化页面布局、色彩体系与交互体验，结合用户反馈持续迭代设计方案；负责山东大学「山小芽 IP 2.0」视觉升级，完成角色设定、图标体系、插画物料及课程页面视觉搭建。</p></div>
+<div class="ab-pop__row"><span class="ab-pop__label">取得成果</span><p class="ab-pop__text">搭建 B 端统一视觉规范与组件库，实现设计复用、缩短迭代周期，核心模块点击率提升 <b>22%</b>；完成「山小芽」IP 2.0 视觉体系落地，产出 <b>68 套</b>视觉方案，课程页面访问量提升 <b>35%</b>，IP 形象成为平台核心视觉符号。</p></div>
+</div>
+</div>
+</div>
+<div class="ab-jobs__room" data-ab-room aria-hidden="true"></div>
+</div>
+</section>
+<section class="prj" id="work" aria-labelledby="prj-title">
+<div class="prj-inner">
+<h2 class="prj-title" id="prj-title">PROJECT WORKS</h2>
+<div class="prj-stage" data-fan-stage>
+<div class="prj-fan" data-fan role="group" aria-label="精选项目卡片，点击查看项目长图">
+<article class="prj-card" data-project="0" style="--i:0">
+<div class="prj-card__float">
+<button class="prj-card__btn" type="button" aria-label="查看项目长图：01 布兹快跑 · IP 游戏化运营视觉">
+<span class="prj-card__back" aria-hidden="true"></span>
+<img class="prj-card__img" src="project-assets/card-01.png" alt="布兹快跑 · IP 游戏化运营视觉设计" width="1036" height="1018" draggable="false" decoding="async">
+<span class="prj-card__cap" aria-hidden="true"><strong class="prj-card__capTitle">IP游戏化运营视觉设计</strong><span class="prj-card__capDesc">原创 IP 布兹快跑跑酷小游戏全套视觉，AIGC 辅助完成角色、场景与 UI 设计。</span></span>
+</button>
+</div>
+</article>
+<article class="prj-card" data-project="1" style="--i:1">
+<div class="prj-card__float">
+<button class="prj-card__btn" type="button" aria-label="查看项目长图：02 Temu · 出海电商 APP 设计">
+<span class="prj-card__back" aria-hidden="true"></span>
+<img class="prj-card__img" src="project-assets/card-02.png" alt="Temu · 出海电商 APP 设计" width="1036" height="1018" draggable="false" decoding="async">
+<span class="prj-card__cap" aria-hidden="true"><strong class="prj-card__capTitle">出海电商APP设计</strong><span class="prj-card__capDesc">跨境电商 Temu APP 改版，完成多页面视觉，适配多国语言与用户习惯。</span></span>
+</button>
+</div>
+</article>
+<article class="prj-card" data-project="2" style="--i:2">
+<div class="prj-card__float">
+<button class="prj-card__btn" type="button" aria-label="查看项目长图：03 OPPO · 营销视觉设计">
+<span class="prj-card__back" aria-hidden="true"></span>
+<img class="prj-card__img" src="project-assets/card-03.png" alt="OPPO · 营销视觉设计" width="1036" height="1018" draggable="false" decoding="async">
+<span class="prj-card__cap" aria-hidden="true"><strong class="prj-card__capTitle">OPPO营销视觉设计</strong><span class="prj-card__capDesc">OPPO 数码配件商业视觉，产出国内外差异化营销海报与详情物料。</span></span>
+</button>
+</div>
+</article>
+<article class="prj-card" data-project="3" style="--i:3">
+<div class="prj-card__float">
+<button class="prj-card__btn" type="button" aria-label="查看项目长图：04 网易游戏 · UI 设计">
+<span class="prj-card__back" aria-hidden="true"></span>
+<img class="prj-card__img" src="project-assets/card-04.png" alt="网易游戏 · UI 设计" width="1036" height="1018" draggable="false" decoding="async">
+<span class="prj-card__cap" aria-hidden="true"><strong class="prj-card__capTitle">网易游戏UI设计</strong><span class="prj-card__capDesc">多款网易游戏小程序、H5 活动 GUI 设计，含海外适配与 AIGC 视觉落地。</span></span>
+</button>
+</div>
+</article>
+<article class="prj-card" data-project="4" style="--i:4">
+<div class="prj-card__float">
+<button class="prj-card__btn" type="button" aria-label="查看项目长图：05 网易游戏 · 视觉设计">
+<span class="prj-card__back" aria-hidden="true"></span>
+<img class="prj-card__img" src="project-assets/card-05.png" alt="网易游戏 · 视觉设计" width="1036" height="1018" draggable="false" decoding="async">
+<span class="prj-card__cap" aria-hidden="true"><strong class="prj-card__capTitle">网易游戏视觉设计</strong><span class="prj-card__capDesc">梦幻西游 IP 联动、蛋仔派对宣发视觉，输出官网及小程序宣传物料。</span></span>
+</button>
+</div>
+</article>
+<article class="prj-card" data-project="5" style="--i:5">
+<div class="prj-card__float">
+<button class="prj-card__btn" type="button" aria-label="查看项目长图：06 智慧树 · B 端产品设计">
+<span class="prj-card__back" aria-hidden="true"></span>
+<img class="prj-card__img" src="project-assets/card-06.png" alt="智慧树 · B 端产品设计" width="1036" height="1018" draggable="false" decoding="async">
+<span class="prj-card__cap" aria-hidden="true"><strong class="prj-card__capTitle">智慧树网B端产品设计</strong><span class="prj-card__capDesc">智慧树 B 端虚拟实验平台设计，完成教师、学生双端界面业务痛点。</span></span>
+</button>
+</div>
+</article>
+<article class="prj-card" data-project="6" style="--i:6">
+<div class="prj-card__float">
+<button class="prj-card__btn" type="button" aria-label="查看项目长图：07 剔影 · 智能座舱 HMI-UI 设计">
+<span class="prj-card__back" aria-hidden="true"></span>
+<img class="prj-card__img" src="project-assets/card-07.png" alt="剔影 · 智能座舱 HMI-UI 设计" width="1036" height="1018" draggable="false" decoding="async">
+<span class="prj-card__cap" aria-hidden="true"><strong class="prj-card__capTitle">智能座舱HMI-UI设计</strong><span class="prj-card__capDesc">冽影·灵驾领克09EM-P车型整套座舱仪表盘、车载界面与视觉体系设计。</span></span>
+</button>
+</div>
+</article>
+</div>
+</div>
+</div>
+</section>
+<section class="ct" id="contact" aria-labelledby="ct-title">
+<div class="ct-inner">
+<div class="ct-copy">
+<h2 class="ct-title" id="ct-title">CONTACT INFORMATION</h2>
+<p class="ct-line">下一个灵感，从对话开始。</p>
+<button class="ct-cta" type="button" id="contact-button" aria-haspopup="dialog">查看联系方式</button>
+</div>
+<figure class="ct-figure" data-ct-figure>
+<div class="ct-figure__btn">
+<span class="ct-figure__tilt" data-ct-tilt>
+<img class="ct-figure__img" src="contact-assets/contact-figure-clean.png" alt="赵正杰 James 机甲造型托腮形象" width="1534" height="894" draggable="false" decoding="async">
+</span>
+</div>
+</figure>
+</div>
+</section>
+</main><footer class="site-foot"><p>©2026 赵正杰JAMES – 个人作品集</p></footer>
+<div class="prj-modal" id="project-modal" hidden>
+<div class="prj-modal__mask" data-modal-close aria-hidden="true"></div>
+<div class="prj-modal__panel" role="dialog" aria-modal="true" aria-labelledby="prj-modal-title" aria-describedby="prj-modal-meta">
+<header class="prj-modal__bar">
+<div class="prj-modal__barText">
+<span class="prj-modal__kicker" id="prj-modal-kicker">PROJECT</span>
+<h2 class="prj-modal__title" id="prj-modal-title"></h2>
+</div>
+<button class="prj-modal__close" type="button" data-modal-close aria-label="关闭项目长图">×</button>
+</header>
+<div class="prj-modal__scroll" tabindex="0">
+<p class="prj-modal__meta" id="prj-modal-meta"></p>
+<div class="prj-modal__pages" id="prj-modal-pages"></div>
+</div>
+</div>
+</div>
+<dialog class="ct-modal" id="contact-dialog" aria-label="联系方式">
+<div class="ct-modal__panel">
+<div class="ct-modal__bar">
+<button class="ct-modal__close" type="button" data-ct-close aria-label="关闭联系方式"><span aria-hidden="true">×</span></button>
+</div>
+<div class="ct-modal__body">
+<div class="ct-modal__grid">
+<ul class="ct-list">
+<li class="ct-item">
+<div class="ct-item__main"><span class="ct-item__label">PHONE / 手机</span><a class="ct-item__value" id="ct-value-0" href="tel:19191118069">191 9111 8069</a></div>
+<button class="ct-copyact" type="button" data-copy="19191118069" data-copy-target="ct-value-0" data-name="手机号" aria-label="复制手机号 191 9111 8069"><svg class="ct-copyact__icon" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false"><rect x="5.6" y="5.6" width="8.4" height="8.4" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.35"/><path d="M10.4 3.6v-.7A1.4 1.4 0 0 0 9 1.5H2.9a1.4 1.4 0 0 0-1.4 1.4V9a1.4 1.4 0 0 0 1.4 1.4h.7" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round"/></svg><span class="ct-copyact__text">复制</span></button>
+</li>
+<li class="ct-item">
+<div class="ct-item__main"><span class="ct-item__label">EMAIL / 邮箱</span><a class="ct-item__value" id="ct-value-1" href="mailto:1849772318@qq.com">1849772318@qq.com</a></div>
+<button class="ct-copyact" type="button" data-copy="1849772318@qq.com" data-copy-target="ct-value-1" data-name="邮箱" aria-label="复制邮箱 1849772318@qq.com"><svg class="ct-copyact__icon" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false"><rect x="5.6" y="5.6" width="8.4" height="8.4" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.35"/><path d="M10.4 3.6v-.7A1.4 1.4 0 0 0 9 1.5H2.9a1.4 1.4 0 0 0-1.4 1.4V9a1.4 1.4 0 0 0 1.4 1.4h.7" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round"/></svg><span class="ct-copyact__text">复制</span></button>
+</li>
+<li class="ct-item">
+<div class="ct-item__main"><span class="ct-item__label">WECHAT / 微信</span><input class="ct-item__value ct-item__input" id="wechat-value" type="text" value="shefu995" readonly spellcheck="false" aria-label="微信号 shefu995"></div>
+<button class="ct-copyact" type="button" data-copy="shefu995" data-copy-target="wechat-value" data-name="微信号" aria-label="复制微信号 shefu995"><svg class="ct-copyact__icon" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false"><rect x="5.6" y="5.6" width="8.4" height="8.4" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.35"/><path d="M10.4 3.6v-.7A1.4 1.4 0 0 0 9 1.5H2.9a1.4 1.4 0 0 0-1.4 1.4V9a1.4 1.4 0 0 0 1.4 1.4h.7" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round"/></svg><span class="ct-copyact__text">复制</span></button>
+</li>
+</ul>
+<div class="ct-qr">
+<div class="ct-qr__box"><img class="ct-qr__img" src="contact-assets/wechat-qr.png" alt="微信二维码" width="673" height="673" decoding="async"></div>
+</div>
+</div>
+<p class="ct-status" role="status" aria-live="polite" aria-atomic="true"></p>
+</div>
+</div>
+</dialog>
+<script src="hero.js"></script>
+<script src="about.js"></script>
+<script src="contact.js"></script>
+<script src="projects.js"></script>
+<script src="motion.js"></script>
+<script src="play-ball.js"></script>
+</body>
+</html>

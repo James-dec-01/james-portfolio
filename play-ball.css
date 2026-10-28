@@ -1,0 +1,112 @@
+/* ============================================================
+   PLAY BALL — one metal sphere living in the viewport.
+   Layer plan: page content < ball (120) < intern panel (200)
+   < fixed nav (300) < hero tip (400) < project modal (1000)
+   < about tooltip (9990) < native dialog (top layer).
+   The root spans the viewport but never intercepts pointers;
+   only the ball image itself is interactive.
+   ============================================================ */
+
+.ball-play {
+  --ball-size: clamp(60px, 4.6vw, 76px);
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  overflow: hidden;
+  pointer-events: none;
+  isolation: isolate;
+  contain: layout style paint;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.ball-play__img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  width: var(--ball-size);
+  height: var(--ball-size);
+  max-width: none;
+  object-fit: contain;
+  transform: translate3d(-200px, -200px, 0) rotate(0deg);
+  transform-origin: 50% 50%;
+  will-change: transform;
+  backface-visibility: hidden;
+  pointer-events: auto;
+  touch-action: pan-y;
+  cursor: var(--cur-link, pointer);
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.4));
+  transition: filter 0.18s ease;
+  -webkit-user-drag: none;
+}
+
+.ball-play__img:hover {
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.46)) brightness(1.05);
+}
+
+.ball-play:focus-visible .ball-play__img {
+  outline: 1px solid rgba(105, 226, 208, 0.9);
+  outline-offset: 3px;
+  border-radius: 50%;
+}
+
+.ball-play.is-suspended {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.ball-play.is-suspended .ball-play__img {
+  pointer-events: none;
+}
+
+
+/* The hero tooltip is re-parented to <body> so its z-index escapes the
+   hero stacking context; keep the original typeface it inherited there. */
+body > .hero-tip {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, "Microsoft YaHei", sans-serif;
+}
+
+/* Keep the open internship panel above the ball without touching its
+   existing layout or visual design. */
+.ab-jobs.panel-over-ball .ab-jobs__pin,
+.ab-jobs:has(.ab-pop.is-open) .ab-jobs__pin {
+  z-index: 200;
+}
+
+@media (max-width: 720px), (pointer: coarse) {
+  .ball-play {
+    --ball-size: clamp(48px, 13.4vw, 58px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ball-play__img {
+    transition: none;
+  }
+
+  .ball-play.is-nudge .ball-play__img {
+    animation: ball-nudge 0.52s cubic-bezier(0.3, 0.7, 0.3, 1);
+  }
+}
+
+@keyframes ball-nudge {
+  0% {
+    rotate: 0deg;
+    scale: 1;
+  }
+  28% {
+    rotate: -9deg;
+    scale: 1.035;
+  }
+  62% {
+    rotate: 6deg;
+    scale: 1.018;
+  }
+  100% {
+    rotate: 0deg;
+    scale: 1;
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "generated": "2026-10-27T08:19:13.798Z",
+  "projects": {
+    "app": [
+      "project-assets/app-01.webp",
+      "project-assets/app-02.webp",
+      "project-assets/app-03.webp",
+      "project-assets/app-04.webp"
+    ],
+    "ip": [
+      "project-assets/ip-01.webp",
+      "project-assets/ip-02.webp",
+      "project-assets/ip-03.webp"
+    ],
+    "netease-ui": [
+      "project-assets/netease-ui-01.webp",
+      "project-assets/netease-ui-02.webp",
+      "project-assets/netease-ui-03.webp",
+      "project-assets/netease-ui-04.webp",
+      "project-assets/netease-ui-05.webp",
+      "project-assets/netease-ui-06.webp"
+    ],
+    "netease-visual": [
+      "project-assets/netease-visual-01.webp",
+      "project-assets/netease-visual-02.webp",
+      "project-assets/netease-visual-03.webp",
+      "project-assets/netease-visual-04.webp"
+    ],
+    "oppo": [
+      "project-assets/oppo-01.webp",
+      "project-assets/oppo-02.webp",
+      "project-assets/oppo-03.webp"
+    ],
+    "zhihuishu": [
+      "project-assets/zhihuishu-01.webp",
+      "project-assets/zhihuishu-02.webp",
+      "project-assets/zhihuishu-03.webp"
+    ],
+    "automotive": [
+      "project-assets/automotive.png"
+    ]
+  }
+}

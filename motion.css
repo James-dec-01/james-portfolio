@@ -1,0 +1,52 @@
+/* ============================================================
+   MOTION — page-wide centre-out reveal for non-hero sections.
+   Hero copy and cursor live in hero.css / cursor.css so nodes
+   are observed and animated exactly once.
+   ============================================================ */
+
+/* ---------- centre-out reveal ---------- */
+
+html.motion .rv {
+  opacity: 0;
+  clip-path: inset(0 46% 0 46%);
+  transition:
+    opacity 0.58s cubic-bezier(0.22, 0.61, 0.36, 1),
+    clip-path 0.76s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition-delay: var(--rv-d, 0ms);
+}
+
+html.motion .rv.is-in {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+}
+
+html.motion .rv--fade {
+  clip-path: none !important;
+  transform: translate3d(0, 14px, 0);
+  transition:
+    opacity 0.62s ease,
+    transform 0.72s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+html.motion .rv--fade.is-in {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* no masking flicker on the fixed nav or on media wrappers */
+html.motion .hf-tab,
+html.motion .prj-stage {
+  opacity: 1;
+  clip-path: none;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.motion .rv,
+  html.motion .rv--fade {
+    opacity: 1 !important;
+    clip-path: none !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

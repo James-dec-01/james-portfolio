@@ -1,0 +1,71 @@
+/* ============================================================
+   CURSOR — one small solid silver arrow, no halo, no trail.
+   The SVG arrow is opaque; text fields keep the text cursor.
+   ============================================================ */
+
+:root {
+  --cur-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M3 2 L3 19.4 L7.7 14.9 L10.7 21.6 L13.6 20.3 L10.6 13.8 L16.7 13.6 Z' fill='%23070a0d' opacity='.55' transform='translate(.9,1)'/%3E%3Cpath d='M2 1 L2 18.4 L6.7 13.9 L9.7 20.6 L12.6 19.3 L9.6 12.8 L15.7 12.5 Z' fill='%23e9eef4'/%3E%3C/svg%3E") 2 1, default;
+  --cur-link: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M3 2 L3 19.4 L7.7 14.9 L10.7 21.6 L13.6 20.3 L10.6 13.8 L16.7 13.6 Z' fill='%23070a0d' opacity='.55' transform='translate(.9,1)'/%3E%3Cpath d='M2 1 L2 18.4 L6.7 13.9 L9.7 20.6 L12.6 19.3 L9.6 12.8 L15.7 12.5 Z' fill='%23f7fafc'/%3E%3C/svg%3E") 2 1, pointer;
+}
+
+html,
+body {
+  cursor: var(--cur-arrow);
+}
+
+a,
+button,
+summary,
+label[for],
+[role="button"],
+.hf-tab__item,
+.hero-tool,
+.hero-figure,
+.prj-card__btn,
+.cover,
+.prj-modal__close,
+.ab-card,
+.ab-pill,
+.ab-job__node,
+.ct-figure__btn,
+.ct-cta,
+.ct-modal__close,
+.ct-copyact {
+  cursor: var(--cur-link);
+}
+
+input,
+textarea,
+select,
+[contenteditable="true"] {
+  cursor: text;
+}
+
+input.ct-item__input {
+  cursor: text;
+}
+
+@media (hover: none), (pointer: coarse) {
+  html,
+  body,
+  a,
+  button,
+  summary,
+  label[for],
+  [role="button"],
+  .hf-tab__item,
+  .hero-tool,
+  .hero-figure,
+  .prj-card__btn,
+  .cover,
+  .prj-modal__close,
+  .ab-card,
+  .ab-pill,
+  .ab-job__node,
+  .ct-figure__btn,
+  .ct-cta,
+  .ct-modal__close,
+  .ct-copyact {
+    cursor: auto !important;
+  }
+}
